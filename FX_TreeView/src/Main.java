@@ -43,20 +43,31 @@ public class Main extends Application{
 		//Create tree
 		tree = new TreeView<>(root);
 		tree.setShowRoot(false);
+		tree.getSelectionModel().selectedItemProperty()
+		.addListener( (v, oldValue, newValue)-> {
+			if(newValue != null)
+				System.out.println(newValue.getValue());
+		});
 				
 		
 		//layout
 		StackPane layout = new StackPane();
 		layout.getChildren().add(tree);
 		
-		Scene scene = new Scene(layout, 300, 250);
+		Scene scene = new Scene(layout, 400, 450);
 		
 		window.setScene(scene);
 		window.show();
 		
 	}
 	
-	//make a branch on the tree
+	//Create tree branch
+	public TreeItem<String> makeBranch(String title, TreeItem<String> parent){
+		TreeItem<String> item = new TreeItem<String>(title);
+		item.setExpanded(true);
+		parent.getChildren().add(item);
+		return item; 
+	}
 	
 
 }
