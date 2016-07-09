@@ -64,7 +64,9 @@ public class Main extends Application{
 		
 		//add and delete buttons
 		Button addButton = new Button("Add");
+		addButton.setOnAction( e -> addButtonClicked());
 		Button deleteButton = new Button("Delete");
+		//deleteButton.setOnAction( e -> deleteButtonClicked());
 		
 		//Make horizontal layout for inputs and buttons
 		HBox hbox = new HBox(); 
@@ -85,6 +87,27 @@ public class Main extends Application{
 		Scene scene = new Scene(layout, 800, 400);
 		window.setScene(scene);
 		window.show();
+	}
+	
+	// add button clicked method
+	public void addButtonClicked(){
+		Products product = new Products();
+		product.setName(nameInput.getText());
+		product.setPrice(Double.parseDouble(priceInput.getText()));
+		product.setQuantity(Integer.parseInt(quantityInput.getText()));
+		// add to table
+		productsTable.getItems().add(product);
+		
+		//clear input fields
+		nameInput.clear();
+		priceInput.clear();
+		quantityInput.clear();
+		
+	}
+	
+	//delete button method
+	public void deleteButtonClicked(){
+		
 	}
 
 	//Get all the products, usually some kind of DB
