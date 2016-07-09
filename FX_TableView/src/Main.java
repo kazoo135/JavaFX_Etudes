@@ -18,7 +18,7 @@ public class Main extends Application{
 
 	}
 
-	@SuppressWarnings("unchecked")
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		window = primaryStage; 
@@ -28,33 +28,35 @@ public class Main extends Application{
 		//name column
 		TableColumn<Products, String> nameCol = new TableColumn<>("Name");
 		nameCol.setMinWidth(200);
+		
+		//use this data for this column
 		nameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
 		
 		//Price col
 		TableColumn<Products, Double> priceCol = new TableColumn<>("Price");
-		nameCol.setMinWidth(100);
-		nameCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+		priceCol.setMinWidth(100);
+		priceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 	
 		//Quantity Col
-		TableColumn<Products, Double> quantityCol = new TableColumn<>("Quantity");
-		nameCol.setMinWidth(100);
-		nameCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
+		TableColumn<Products, Integer> quantityCol = new TableColumn<>("Quantity");
+		quantityCol.setMinWidth(100);
+		quantityCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 		
 		//build the table
 		productsTable = new TableView<>();
-		productsTable.setItems(getProduct());
+		productsTable.setItems(getProducts());
 		productsTable.getColumns().addAll(nameCol, priceCol, quantityCol);
 		
 		VBox layout = new VBox(10);
 		layout.getChildren().addAll(productsTable);
 		
-		Scene scene = new Scene(layout, 300, 400);
+		Scene scene = new Scene(layout, 350, 400);
 		window.setScene(scene);
 		window.show();
 	}
 
 	//Get all the products, usually some kind of DB
-	public ObservableList<Products> getProduct(){
+	public ObservableList<Products> getProducts(){
 		
 		ObservableList<Products> products = FXCollections.observableArrayList();
 		products.add(new Products("Gibson SG", 1500.00, 20));
