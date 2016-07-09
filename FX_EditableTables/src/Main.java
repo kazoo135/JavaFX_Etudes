@@ -66,7 +66,7 @@ public class Main extends Application{
 		Button addButton = new Button("Add");
 		addButton.setOnAction( e -> addButtonClicked());
 		Button deleteButton = new Button("Delete");
-		//deleteButton.setOnAction( e -> deleteButtonClicked());
+		deleteButton.setOnAction( e -> deleteButtonClicked());
 		
 		//Make horizontal layout for inputs and buttons
 		HBox hbox = new HBox(); 
@@ -107,7 +107,10 @@ public class Main extends Application{
 	
 	//delete button method
 	public void deleteButtonClicked(){
-		
+		ObservableList<Products> selectedProduct, allProducts;
+		allProducts = productsTable.getItems();
+		selectedProduct = productsTable.getSelectionModel().getSelectedItems();
+		selectedProduct.forEach(allProducts :: remove);
 	}
 
 	//Get all the products, usually some kind of DB
