@@ -1,10 +1,14 @@
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -12,6 +16,7 @@ public class Main extends Application{
 	
 	Stage window;
 	TableView<Products> productsTable;
+	TextField nameInput, priceInput, quantityInput; 
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -42,15 +47,42 @@ public class Main extends Application{
 		quantityCol.setMinWidth(100);
 		quantityCol.setCellValueFactory(new PropertyValueFactory<>("quantity"));
 		
+		//nameInput
+		nameInput = new TextField();
+		nameInput.setPromptText("Product Name");
+		nameInput.setMinWidth(125);
+		
+		//price input
+		priceInput = new TextField();
+		priceInput.setPromptText("Product Price");
+		priceInput.setMinWidth(125);
+		
+		//quantity input
+		quantityInput = new TextField();
+		quantityInput.setPromptText("Quantity");
+		quantityInput.setMinWidth(125);
+		
+		//add and delete buttons
+		Button addButton = new Button("Add");
+		Button deleteButton = new Button("Delete");
+		
+		//Make horizontal layout for inputs and buttons
+		HBox hbox = new HBox(); 
+		hbox.setPadding(new Insets(10,10,10,10));
+		hbox.setSpacing(10);
+		hbox.getChildren().addAll(nameInput, priceInput, quantityInput, addButton, deleteButton);
+		
+		
+		
 		//build the table
 		productsTable = new TableView<>();
 		productsTable.setItems(getProducts());
 		productsTable.getColumns().addAll(nameCol, priceCol, quantityCol);
 		
 		VBox layout = new VBox(10);
-		layout.getChildren().addAll(productsTable);
+		layout.getChildren().addAll(productsTable, hbox);
 		
-		Scene scene = new Scene(layout, 350, 400);
+		Scene scene = new Scene(layout, 800, 400);
 		window.setScene(scene);
 		window.show();
 	}
