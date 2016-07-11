@@ -1,5 +1,6 @@
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -60,11 +61,24 @@ public class Main extends Application{
 		redo.setDisable(true);
 		editMenu.getItems().add(redo);
 		
+		// Help Menu
+		Menu helpMenu = new Menu("Help");
+		CheckMenuItem showLines = new CheckMenuItem("Show line numbers");
+		showLines.setOnAction( e -> {
+			if(showLines.isSelected())
+				System.out.println("Show line numbers");
+			else
+				System.out.println("Hide line numbers");
+		});
 		
+		CheckMenuItem autosave = new CheckMenuItem("Auto Save");
 		
+		//set item as selected by default
+		autosave.setSelected(true);
+		helpMenu.getItems().addAll(showLines, autosave);
 		//Main menu bar
 		MenuBar menubar = new MenuBar();
-		menubar.getMenus().addAll(fileMenu, editMenu);
+		menubar.getMenus().addAll(fileMenu, editMenu, helpMenu);
 		
 		layout = new BorderPane();
 		layout.setTop(menubar);
