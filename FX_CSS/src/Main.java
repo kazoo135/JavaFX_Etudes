@@ -29,7 +29,8 @@ public class Main extends Application{
 		
 		Label titleLabel = new Label("Log In Form");
 		GridPane.setConstraints(titleLabel, 1, 0);
-		Label userLabel = new Label("User:");
+		Label userLabel = new Label("User Name:");
+//		userLabel.setStyle("-fx-text-fill: #ffffff;");
 		GridPane.setConstraints(userLabel, 0, 1);
 		TextField userText = new TextField("Bobby");
 		GridPane.setConstraints(userText, 1, 1);
@@ -45,9 +46,15 @@ public class Main extends Application{
 		Button login = new Button("Log in");
 		GridPane.setConstraints(login, 1, 3);
 		
+/*	login.setOnAction( e -> {
+			setUserAgentStylesheet(STYLESHEET_CASPIAN);
+		});
+		*/
 		grid.getChildren().addAll(titleLabel, userLabel, userText, passLabel,
 				passText, login);
 		Scene scene = new Scene(grid, 300, 200);
+		//add stylesheet to the scene
+		scene.getStylesheets().add("viper.css");
 		window.setScene(scene);
 		window.show(); 
 	
