@@ -4,7 +4,9 @@ import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioMenuItem;
 import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -70,15 +72,31 @@ public class Main extends Application{
 			else
 				System.out.println("Hide line numbers");
 		});
-		
 		CheckMenuItem autosave = new CheckMenuItem("Auto Save");
 		
 		//set item as selected by default
 		autosave.setSelected(true);
 		helpMenu.getItems().addAll(showLines, autosave);
+		
+		//Difficulty radio menu items
+		Menu difficultyMenu = new Menu("Difficulty");
+		ToggleGroup difficultyGroup = new ToggleGroup(); 
+		
+		RadioMenuItem easy = new RadioMenuItem("Easy");
+		RadioMenuItem medium = new RadioMenuItem("Medium");
+		RadioMenuItem hard = new RadioMenuItem("Hard");
+		
+		//add radio menu items to toggle group
+		easy.setToggleGroup(difficultyGroup);
+		medium.setToggleGroup(difficultyGroup);
+		hard.setToggleGroup(difficultyGroup);
+		
+		//add items to menu
+		difficultyMenu.getItems().addAll(easy, medium, hard);
+		
 		//Main menu bar
 		MenuBar menubar = new MenuBar();
-		menubar.getMenus().addAll(fileMenu, editMenu, helpMenu);
+		menubar.getMenus().addAll(fileMenu, editMenu, helpMenu, difficultyMenu);
 		
 		layout = new BorderPane();
 		layout.setTop(menubar);
