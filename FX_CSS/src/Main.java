@@ -54,7 +54,7 @@ public class Main extends Application{
 				passText, login);
 		Scene scene = new Scene(grid, 300, 200);
 		//add stylesheet to the scene
-		scene.getStylesheets().add(this.getClass().getResource("viper.css").toExternalForm());
+		scene.getStylesheets().add(Main.class.getResource("viper.css").toExternalForm());
 		window.setScene(scene);
 		window.show(); 
 	
