@@ -5,7 +5,7 @@ import javafx.scene.control.Label;
 /*
  * This demo will take an input in a text field.
  * As the text field is being filled in  a label will
- * be updated to display the text being typed into 
+ * be dynamically updated to display the text being typed into 
  * the text field
  */
 import javafx.scene.control.TextField;
@@ -38,6 +38,9 @@ public class Main extends Application{
 		
 		VBox layout = new VBox(10, userInput, bottomText);
 		layout.setAlignment(Pos.CENTER);
+		
+		//bind input text to secondLabel
+		secondLabel.textProperty().bind(userInput.textProperty());
 		
 		Scene scene = new Scene(layout, 300, 300);
 		window.setScene(scene);
