@@ -19,7 +19,17 @@ public class Main extends Application{
 		window = primaryStage;
 		window.setTitle("FX Properties Demo");
 		
+		Person harry = new Person();
+		
+		//Add event listener to property
+		harry.firstNameProperty().addListener( (v,oldValue, newValue) -> {
+			System.out.println("Name changed to: " + newValue);
+			System.out.println("firstNameProperty(): " + harry.firstNameProperty());
+			System.out.println("getFirstName(): " + harry.getFirstname() );
+		});
+		
 		Button submit = new Button("Submit");
+		submit.setOnAction( e -> harry.setFirstname("Flora"));
 		
 		StackPane layout = new StackPane();
 		layout.getChildren().add(submit);
