@@ -42,7 +42,7 @@ public class Main extends Application{
 		//bind input text to secondLabel
 		secondLabel.textProperty().bind(userInput.textProperty());
 		
-		Scene scene = new Scene(layout, 300, 300);
+		Scene scene = new Scene(layout, 500, 200);
 		window.setScene(scene);
 		window.show();
 		
