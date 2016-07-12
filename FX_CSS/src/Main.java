@@ -28,6 +28,8 @@ public class Main extends Application{
 		grid.setHgap(10);
 		
 		Label titleLabel = new Label("Log In Form");
+		//add custom id from css file
+		titleLabel.setId("boldLabel");
 		GridPane.setConstraints(titleLabel, 1, 0);
 		Label userLabel = new Label("User Name:");
 //		userLabel.setStyle("-fx-text-fill: #ffffff;");
@@ -50,9 +52,19 @@ public class Main extends Application{
 			setUserAgentStylesheet(STYLESHEET_CASPIAN);
 		});
 		*/
+
+		
+		//signup
+		Button signup = new Button("Signup");
+		GridPane.setConstraints(signup, 1 , 4);
+		//adding custom style class
+		signup.getStyleClass().add("button-blue");
+		
 		grid.getChildren().addAll(titleLabel, userLabel, userText, passLabel,
-				passText, login);
-		Scene scene = new Scene(grid, 300, 200);
+				passText, login, signup);
+		
+		Scene scene = new Scene(grid, 400, 350);
+		
 		//add stylesheet to the scene
 		scene.getStylesheets().add(Main.class.getResource("viper.css").toExternalForm());
 		window.setScene(scene);
