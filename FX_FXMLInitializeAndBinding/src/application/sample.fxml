@@ -6,14 +6,12 @@
 
 <VBox  xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
 	<!-- TODO Add Nodes -->
-	<Label >
+	<Label  fx:id="firstLabel">
 		<text>Test Label 1</text>
 	</Label>
-		<Label >
-		<text>Test Label 2</text>
+	<Label text="${firstLabel.text}">
 	</Label>
-	<Button fx:id="button" onAction="#handleButtonClicks">
-		<text>Submit</text>
-	</Button>
+
+
 </VBox>
 
